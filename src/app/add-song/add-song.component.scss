@@ -1,0 +1,24 @@
+.form__container {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .song-form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+
+  .song-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    mat-form-field {
+      width: 49%;
+    }
+    .song-image {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<div class="form__container">
+  <form [formGroup]="songForm" class="song-form" (ngSubmit)="onSubmit()">
+    <div class="song-details">
+      <mat-form-field appearance="fill">
+        <mat-label>song id</mat-label>
+        <input matInput formControlName="songId" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>song name</mat-label>
+        <input matInput formControlName="songName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="song-image">
+        <mat-label>song image</mat-label>
+        <input matInput formControlName="songImage" />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>artist name</mat-label>
+      <input matInput formControlName="artistName" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>artist image</mat-label>
+      <input matInput formControlName="artistImage" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>genre</mat-label>
+      <input matInput formControlName="genre" />
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">add song</button>
+  </form>
+</div>

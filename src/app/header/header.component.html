@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <button
+    (click)="drawer.toggle()"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-button>
+    <span [ngStyle]="styles">
+      <mat-icon class="mat-icon-custom">graphic_eq</mat-icon>
+      MUSIC-APP
+    </span>
+  </button>
+  <span class="example-spacer"></span>
+  <div class="search">
+    <input type="text" placeholder="search" class="search__box" />
+    <button mat-button>
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <button
+    mat-raised-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+    color="primary"
+  >
+    Account
+  </button>
+  <button
+    mat-raised-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    Logout
+  </button>
+</mat-toolbar>
+<mat-drawer #drawer class="example-sidenav" mode="side">
+  <button
+    (click)="drawer.toggle()"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <br />
+  <b> LATEST RELEASES </b>
+  <mat-card *ngFor="let m of music" class="simple-card">
+    <b>{{ m.name }}</b> &bull; {{ m.singer }}
+  </mat-card>
+  <br />
+  <b>FAVOURITES</b>
+  <mat-card *ngFor="let f of favourites" class="simple-card">
+    <b>{{ f.name }}</b> &bull; {{ f.singer }}
+  </mat-card>
+</mat-drawer>

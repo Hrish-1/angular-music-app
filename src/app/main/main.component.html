@@ -1,0 +1,61 @@
+<div class="add-song">
+  <button mat-button routerLink="/add">
+    <b>Add song &nbsp;</b>
+    <mat-icon>add_circle</mat-icon>
+  </button>
+</div>
+<main>
+  <mat-card class="example-card" *ngFor="let m of music; let i = index">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="example-header-image"
+        style="background-image: url('{{ m.singerImage }}');"
+      ></div>
+      <mat-card-title>{{ m.name }}</mat-card-title>
+      <mat-card-subtitle>{{ m.singer }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="{{ m.image }}"
+      alt="Photo of a Shiba Inu"
+      height="200px"
+      width="200px"
+    />
+    <mat-card-actions class="actions">
+      <button
+        mat-button
+        (click)="pause()"
+        *ngIf="state?.playing && state?.currentSong === m.file"
+      >
+        <mat-icon mat-list-icon class="mat-icon-custom">pause</mat-icon>
+      </button>
+      <button
+        mat-button
+        (click)="
+          state?.duration && state?.currentSong === m.file
+            ? play()
+            : openFile(m, i)
+        "
+        *ngIf="!state?.playing || state?.currentSong !== m.file"
+      >
+        <mat-icon mat-list-icon class="mat-icon-custom"
+          >play_circle_filled</mat-icon
+        >
+      </button>
+      <button
+        mat-button
+        *ngIf="!m.isFavourite; else elseBlock"
+        (click)="toggleFavourites(m)"
+      >
+        <mat-icon class="mat-icon-custom">favorite_border</mat-icon>
+      </button>
+      <ng-template #elseBlock>
+        <button mat-button (click)="toggleFavourites(m)">
+          <mat-icon class="mat-icon-custom">favorite</mat-icon>
+        </button>
+      </ng-template>
+    </mat-card-actions>
+    <app-rating [rating]="m.rating"></app-rating>
+  </mat-card>
+</main>
